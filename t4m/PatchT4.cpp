@@ -66,6 +66,14 @@ void PatchT4_PreLoad()
 	nop(0x005FF743, 5); // disable Sys_CreateSplash
 	//nop(0x005FF698, 5); // disable Sys_CheckCrashOrRerun
 	//nop(0x005FE685, 5); // disable Sys_HasConfigureChecksumChanged
+	
+	//这里是去掉那几个框
+	// ↓ 导致我分辨率和抗狗牙一直变回默认的罪魁祸首,T4M将其去掉却导致直接帮我点了是(cao)
+	//google translate lol
+	//Here is to remove those boxes
+	// ↓ Caused my resolution and anti-dog teeth to have been changed back to the default culprit, T4M removed them but it led to direct help for me to order (cao)
+	nop(0x5FE685, 5); // Remove Optimal Check
+	*(BYTE*)0x5FF386 = (BYTE)0xEB; // Skip Safe Mode Check
 }
 
 void PatchT4_SteamDRM()
