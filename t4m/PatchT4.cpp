@@ -32,7 +32,10 @@ void Sys_RunInit()
 void PatchT4()
 {
 	//*(const char**)0x00840FF0 = "raw";
-	PatchT4_SteamDRM();
+	
+	// ↓ This causes server verification to fail?
+	//PatchT4_SteamDRM();
+	
 	PatchT4_PreLoad();
 	PatchT4_MemoryLimits();
 	PatchT4_Branding();
@@ -46,6 +49,9 @@ void PatchT4()
 	// check if game got started using steam
 	if (!GetModuleHandle("gameoverlayrenderer.dll"))
 		loadGameOverlay();
+	
+	//Change the title to shock     fuck it why not
+	*(DWORD*)0x6D65A0 = (DWORD)"Call of Duty: World at War Campaign/Coop - T4M Swifty Editon";
 }
 
 void *MemCpyFix(void *a1, void **a2, int len)
