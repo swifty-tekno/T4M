@@ -16,7 +16,7 @@ const char* SetShortVersion();
 void PatchT4_Branding()
 {
 	//Remove Online function
-	//
+	///
 	nop(0x57C32E, 5);
 	nop(0x5FC956, 5);
 	//
