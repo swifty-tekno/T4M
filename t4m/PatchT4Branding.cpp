@@ -15,6 +15,12 @@ const char* SetShortVersion();
 
 void PatchT4_Branding()
 {
+	//Remove Online function
+	//
+	nop(0x57C32E, 5);
+	nop(0x5FC956, 5);
+	//
+	
 	// TODO: Replace shortversion DVars and other version related locations
 	nop(0x59D68B, 5);										// don't play intro video
 	nop(0x5FD91B, 5);										// disable pc_newversionavailable check
